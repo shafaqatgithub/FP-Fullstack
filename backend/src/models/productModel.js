@@ -3,16 +3,15 @@ import mongoose from "mongoose";
 const reviewSchema = mongoose.Schema(
     {
         name: { type: String, required: true },
-        rating: { type: Number, required: true },
-        comment: { type: String, required: true },
+        rating: { type: Number },
+        comment: { type: String },
         user: {
             type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: "User",
-        },
+            ref: "User"
+        }
     },
     {
-        timestamps: true,
+        timestamps: true
     }
 );
 
@@ -23,16 +22,15 @@ const productSchema = new mongoose.Schema(
             trim: true,
             maxLength: 200,
             required: true,
-            index: true,
+            index: true
         },
         productDescription: {
             type: String,
-            maxLength: 2000,
+            maxLength: 2000
         },
         productCategory: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Category",
-            required: true,
+            ref: "Category"
         },
         productImage: { type: String },
         productCost: { type: Number, min: 0, max: 100000, required: true },
@@ -40,20 +38,20 @@ const productSchema = new mongoose.Schema(
             type: Number,
             min: 0,
             max: 100000,
-            required: true,
+            required: true
         },
         isAvailable: { type: Boolean, default: true },
         reviews: [reviewSchema],
         rating: {
             type: Number,
             required: true,
-            default: 0,
+            default: 0
         },
         numReviews: {
             type: Number,
             required: true,
-            default: 0,
-        },
+            default: 0
+        }
     },
     { timestamps: true }
 );
